@@ -20,7 +20,7 @@ class dmlite::db::dpm ($dbname, $dbuser, $dbpass, $dbhost) inherits dmlite::db::
     user     => $dbuser,
     password => $dbpass,
     host     => $dbhost,
-    sql      => '/usr/share/dmlite/dbscripts/dpm_mysql_db.sql',
+    sql      => ['/usr/share/dmlite/dbscripts/dpm_mysql_db.sql'],
     require  => File_line['dpm mysql commentcreate']
   }
 
