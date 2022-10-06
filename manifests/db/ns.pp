@@ -28,7 +28,7 @@ class dmlite::db::ns ($flavor , $dbname, $dbuser, $dbpass, $dbhost) inherits dml
     user     => $dbuser,
     password => $dbpass,
     host     => $dbhost,
-    sql      => '/usr/share/dmlite/dbscripts/cns_mysql_db.sql',
+    sql      => ['/usr/share/dmlite/dbscripts/cns_mysql_db.sql'],
     require  => [File_line["${flavor} mysql commentcreate"],File_line['workaround for missing / db creation']]
   }
 
