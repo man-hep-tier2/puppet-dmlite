@@ -1,0 +1,59 @@
+{
+  "name": "lcgdm-dmlite",
+  "version": "1.15.0",
+  "author": "DPM",
+  "summary": "Package for managing dmlite plugins",
+  "license": "Apache-2.0",
+  "source": "https://gitlab.cern.ch/lcgdm/dmlite",
+  "project_page": "http://lcgdm.web.cern.ch/dmlite",
+  "issues_url": "https://its.cern.ch/jira/projects/LCGDM",
+  "dependencies": [
+    {
+      "name": "puppet/fetchcrl",
+      "version_requirement": ">= 2.1.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.25.0"
+    },
+    {
+      "name": "lcgdm/xrootd",
+      "version_requirement": ">= 0.2.9"
+    },
+    {
+      "name": "lcgdm/lcgdm",
+      "version_requirement": ">= 0.3.13"
+    },
+    {
+      "name": "lcgdm/gridftp",
+      "version_requirement": ">= 0.2.8"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6","7","8"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6","7","8"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "6","7"
+      ]
+    }
+  ],
+  "requirements": [
+
+  ],
+  "description": "This package provides modules for managing dmlite",
+  "tags": [
+
+  ]
+}
