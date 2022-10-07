@@ -29,7 +29,7 @@ class dmlite::db::dpm ($dbname, $dbuser, $dbpass, $dbhost) inherits dmlite::db::
 
     mysql_user { "${dbuser}@${::fqdn}":
       ensure        => present,
-      password_hash => mysql_password($dbpass),
+      password_hash => mysql::password($dbpass),
       provider      => 'mysql',
     }
     mysql_grant { "${dbuser}@${::fqdn}/${dbname}.*":
