@@ -8,7 +8,7 @@ class dmlite::plugins::hdfs::params (
   $hdfs_port = hiera('dmlite::plugins::hdfs::params::hdfs_port', undef)
   $hdfs_user = hiera('dmlite::plugins::hdfs::params::hdfs_user', undef)
   $hdfs_mode = hiera('dmlite::plugins::hdfs::params::hdfs_mode', rw)
-  $hdfs_gateway = hiera('dmlite::plugins::hdfs::params::hdfs_gateway', $::fqdn)
+  $hdfs_gateway = hiera('dmlite::plugins::hdfs::params::hdfs_gateway', $facts['networking']['fqdn'])
   $hdfs_tmp_folder = hiera('dmlite::plugins::hdfs::params::hdfs_tmp_folder', '/tmp')
   $hdfs_replication = hiera('dmlite::plugins::hdfs::params::hdfs_replication',3 )
   $hadoop_home_lib = hiera('dmlite::plugins::hdfs::params::hadoop_home_lib','/usr/lib/hadoop')

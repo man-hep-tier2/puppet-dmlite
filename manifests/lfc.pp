@@ -3,8 +3,8 @@ class dmlite::lfc (
   String $dbuser,
   String $dbpass,
   Stdlib::Host $dbhost = 'localhost',
-  Stdlib::Host $dpmhost = $::fqdn,
-  Stdlib::Host $nshost = $::fqdn,
+  Stdlib::Host $dpmhost = $facts['networking']['fqdn'],
+  Stdlib::Host $nshost = $facts['networking']['fqdn'],
   Boolean $debuginfo = false,
 ) {
   # for the LFC, the token password is not used

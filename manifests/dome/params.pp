@@ -39,9 +39,9 @@ class dmlite::dome::params (
   $ns_oidc_clientid = hiera('dmlite::dav::params::ns_oidc_clientid', '')
   $ns_oidc_clientsecret = hiera('dmlite::dav::params::ns_oidc_clientsecret', '')
   $ns_oidc_passphrase = hiera('dmlite::dav::params::ns_oidc_passphrase', '')
-  $ns_oidc_redirecturi = hiera('dmlite::dav::params::ns_oidc_redirecturi', "https://${::fqdn}/dpm/redirect_uri")
+  $ns_oidc_redirecturi = hiera('dmlite::dav::params::ns_oidc_redirecturi', "https://${facts['networking']['fqdn']}/dpm/redirect_uri")
   $ns_oidc_allowissuer = hiera('dmlite::dav::params::ns_oidc_allowissuer', ['"/dpm/cern.ch/home/wlcg" "https://wlcg.cloud.cnaf.infn.it/"'])
-  $ns_oidc_allowaudience = hiera('dmlite::dav::params::ns_oidc_allowaudience', ['https://wlcg.cern.ch/jwt/v1/any', "${::fqdn}"])
+  $ns_oidc_allowaudience = hiera('dmlite::dav::params::ns_oidc_allowaudience', ['https://wlcg.cern.ch/jwt/v1/any', "${facts['networking']['fqdn']}"])
   $ns_oidc_auth_verify_jwks_uri = hiera('dmlite::dav::params::ns_oidc_auth_verify_jwks_uri', 'https://wlcg.cloud.cnaf.infn.it/jwk')
 
   $informer_urls = hiera('dmlite::dome::params::informer_urls', ['https://dpmhead-rc.cern.ch/dpminfo'])

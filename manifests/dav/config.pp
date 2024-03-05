@@ -61,7 +61,7 @@ class dmlite::dav::config (
 
   # some installations don't have complete data types enabled by default, use
   # str2bool to catch both cases
-  if(str2bool($::selinux) != false) {
+  if(str2bool($facts['os']['selinux']['enabled']) != false) {
     selboolean{'httpd_can_network_connect': value => on, persistent => true }
     selboolean{'httpd_execmem': value => on, persistent => true }
   }
@@ -80,7 +80,7 @@ class dmlite::dav::config (
   }
 
   #enable cors
-  $domain_string = regsubst($::domain, '\.', '\\.', 'G')
+  $domain_string = regsubst($facts['networking']['domain'], '\.', '\\.', 'G')
   file {
     '/etc/httpd/conf.d/cross-domain.conf':
       ensure  => present,

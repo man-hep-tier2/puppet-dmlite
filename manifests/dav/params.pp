@@ -44,6 +44,6 @@ class dmlite::dav::params (
   $ns_oidc_clientid             = hiera('dmlite::dav::params::ns_oidc_clientid', '')
   $ns_oidc_clientsecret         = hiera('dmlite::dav::params::ns_oidc_clientsecret', '')
   $ns_oidc_passphrase           = hiera('dmlite::dav::params::ns_oidc_passphrase', '')
-  $ns_oidc_redirecturi          = hiera('dmlite::dav::params::ns_oidc_redirecturi', "https://${::fqdn}/dpm/redirect_uri")
+  $ns_oidc_redirecturi          = hiera('dmlite::dav::params::ns_oidc_redirecturi', "https://${facts['networking']['fqdn']}/dpm/redirect_uri")
   $ns_oidc_auth_verify_jwks_uri = hiera('dmlite::dav::params::ns_oidc_auth_verify_jwks_uri', 'https://wlcg.cloud.cnaf.infn.it/jwk')
 }

@@ -2,8 +2,8 @@ class dmlite::xrootd (
   Array[Enum['head', 'disk']] $nodetype = ['head', 'disk'], # head, disk
   String $domain,
   Stdlib::Unixpath $dmlite_conf = '/etc/dmlite.conf',
-  Stdlib::Host $dpmhost = $::fqdn,
-  Stdlib::Host $nshost = $::fqdn,
+  Stdlib::Host $dpmhost = $facts['networking']['fqdn'],
+  Stdlib::Host $nshost = $facts['networking']['fqdn'],
   String $ns_basepath = 'dpm',
   Boolean $xrootd_use_voms = true,
   Boolean $xrootd_use_delegation = false,
@@ -230,11 +230,11 @@ class dmlite::xrootd (
       dpm_dome_conf_file     => '/etc/domehead.conf',
       dpm_xrdhttp_cipherlist => $dpm_xrdhttp_cipherlist
     }
-    $l = size($::fqdn)
+    $l = size($facts['networking']['fqdn'])
     if $l > 16 {
-      $cms_cidtag = regsubst($::fqdn, '^(.{16})(.*)', '\1')
+      $cms_cidtag = regsubst($facts['networking']['fqdn'], '^(.{16})(.*)', '\1')
     } else {
-      $cms_cidtag = $::fqdn
+      $cms_cidtag = $facts['networking']['fqdn']
     }
 
     $oss_statlib = '-2 libXrdDPMStatInfo.so'

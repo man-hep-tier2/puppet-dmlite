@@ -24,22 +24,22 @@ class dmlite::db::dpm ($dbname, $dbuser, $dbpass, $dbhost) inherits dmlite::db::
     require  => File_line['dpm mysql commentcreate']
   }
 
-  if $dbhost != 'localhost' and $dbhost != $::fqdn {
+  if $dbhost != 'localhost' and $dbhost != $facts['networking']['fqdn'] {
     #create the DB user and the grants
 
-    mysql_user { "${dbuser}@${::fqdn}":
+    mysql_user { "${dbuser}@${facts['networking']['fqdn']}":
       ensure        => present,
       password_hash => mysql::password($dbpass),
       provider      => 'mysql',
     }
-    mysql_grant { "${dbuser}@${::fqdn}/${dbname}.*":
+    mysql_grant { "${dbuser}@${facts['networking']['fqdn']}/${dbname}.*":
       ensure     => 'present',
       options    => ['GRANT'],
       privileges => ['ALL'],
       provider   => 'mysql',
-      user       => "${dbuser}@${::fqdn}",
+      user       => "${dbuser}@${facts['networking']['fqdn']}",
       table      => "${dbname}.*",
-      require    => [Mysql_database[$dbname], Mysql_user["${dbuser}@${::fqdn}"], ],
+      require    => [Mysql_database[$dbname], Mysql_user["${dbuser}@${facts['networking']['fqdn']}"], ],
     }
   }
 }

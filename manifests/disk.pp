@@ -5,8 +5,8 @@ class dmlite::disk (
   Optional[String] $mysql_password = undef,
   Optional[Stdlib::Host] $mysql_host = undef,
   Integer $mysql_dir_space_report_depth = 6,
-  Stdlib::Host $dpmhost = $::fqdn,
-  Stdlib::Host $nshost = $::fqdn,
+  Stdlib::Host $dpmhost = $facts['networking']['fqdn'],
+  Stdlib::Host $nshost = $facts['networking']['fqdn'],
   Boolean $debuginfo = false,
   Integer $log_level = 1,
   Array[String] $logcomponents = [],
@@ -40,7 +40,7 @@ class dmlite::disk (
     class{'dmlite::plugins::domeadapter::config::disk':
       token_password => $token_password,
       token_id       => $token_id,
-      dome_disk_url  => "http://${::fqdn}:1095/domedisk",
+      dome_disk_url  => "http://${facts['networking']['fqdn']}:1095/domedisk",
       dome_head_url  => $_headnode_domeurl,
       host_dn        => $host_dn
     }

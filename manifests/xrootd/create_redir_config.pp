@@ -12,7 +12,7 @@ define dmlite::xrootd::create_redir_config (
   $namelib = undef,
   $setenv = undef,
 
-  $dpm_host = $::fqdn,
+  $dpm_host = $facts['networking']['fqdn'],
 
   $xrootd_user = $xrootd::config::xrootd_user,
   $xrootd_group = $xrootd::config::xrootd_group,

@@ -6,9 +6,9 @@ class dmlite::head (
   Stdlib::Host $mysql_host = 'localhost',
   String $dpm_db = 'dpm_db',
   String $ns_db = 'cns_db',
-  Stdlib::Host $dpmhost = $::fqdn,
-  Stdlib::Host $nshost = $::fqdn,
-  Stdlib::Host $dbhost = $::fqdn,
+  Stdlib::Host $dpmhost = $facts['networking']['fqdn'],
+  Stdlib::Host $nshost = $facts['networking']['fqdn'],
+  Stdlib::Host $dbhost = $facts['networking']['fqdn'],
   Optional[String] $domain = undef,
   Optional[Array[String]] $volist = undef,
   Boolean $legacy = true,
@@ -64,7 +64,7 @@ class dmlite::head (
     #
     # In case the DB is not local we should configure the file /root/.my.cnf
 
-    if $dbhost != 'localhost' and $dbhost != $::fqdn and $dbmanage {
+    if $dbhost != 'localhost' and $dbhost != $facts['networking']['fqdn'] and $dbmanage {
         #check if root pass is empty
         if empty($mysqlrootpass ) {
                 fail('mysqlrootpass parameter  should  not be empty')
@@ -102,8 +102,8 @@ class dmlite::head (
       token_password => $token_password,
       token_id       => $token_id,
       adminuser      => $adminuser,
-      dome_head_url  => "http://${::fqdn}:1094/domehead",
-      dome_disk_url  => "http://${::fqdn}:1095/domedisk",
+      dome_head_url  => "http://${facts['networking']['fqdn']}:1094/domehead",
+      dome_disk_url  => "http://${facts['networking']['fqdn']}:1095/domedisk",
       disknode       => $enable_disknode,
       host_dn        => $host_dn
     }
